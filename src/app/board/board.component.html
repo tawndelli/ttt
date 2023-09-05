@@ -1,0 +1,41 @@
+<div class="grid grid-cols-3 grid-rows-2 items-center border-2 rounded-lg border-stone-400 bg-neutral-200 mb-5">
+    <!-- <div class="flex col-start-1 col-end-2 justify-start ml-2">
+        <p class="mr-1">Player:</p>
+        <select class="rounded-sm w-24" #players (change)="onSelected(players.value)">
+            <option value="X" defult>Player X</option>
+            <option value="O">Player O</option>
+        </select>
+    </div> -->
+
+    <div class="col-start-2 col-end-3 wrapper">
+        <h1 class="text-4xl mt-2 mb-2 font-bold justify-self-center text-neutral-600">TikTakTow</h1>
+    </div>
+
+    <div class="col-start-1 col-span-1 ml-2">
+        <button class="rounded-xl bg-stone-500 p-2 hover:bg-stone-400 text-white text-sm w-36 border-neutral-300 border-solid border-2" (click)="newGame()">Start New Game</button>
+    </div>
+
+    <div class="col-start-2 col-span-2 mr-2">
+        <ng-template [ngIf]="!winner && !isDraw">
+            <h3 class="text-xl font-medium text-end text-neutral-500">Player {{ player }}'s move</h3>
+        </ng-template>
+
+        <ng-template [ngIf]="isDraw">
+            <h3 class="text-xl font-medium text-end text-neutral-500">Draw game!</h3>
+        </ng-template>
+    
+        <h2 class="text-xl font-medium text-end text-neutral-500" *ngIf="winner">Player {{ winner }} won the game!</h2>
+    </div>
+</div>
+
+<main class="grid grid-cols-3 grid-rows-3">
+    <app-square id="0" [value]="squares[0]" (click)="makeMove(0, selectedPlayer)"></app-square>
+    <app-square id="1" [value]="squares[1]" (click)="makeMove(1, selectedPlayer)"></app-square>
+    <app-square id="2" [value]="squares[2]" (click)="makeMove(2, selectedPlayer)"></app-square>
+    <app-square id="3" [value]="squares[3]" (click)="makeMove(3, selectedPlayer)"></app-square>
+    <app-square id="4" [value]="squares[4]" (click)="makeMove(4, selectedPlayer)"></app-square>
+    <app-square id="5" [value]="squares[5]" (click)="makeMove(5, selectedPlayer)"></app-square>
+    <app-square id="6" [value]="squares[6]" (click)="makeMove(6, selectedPlayer)"></app-square>
+    <app-square id="7" [value]="squares[7]" (click)="makeMove(7, selectedPlayer)"></app-square>
+    <app-square id="8" [value]="squares[8]" (click)="makeMove(8, selectedPlayer)"></app-square>
+</main> 

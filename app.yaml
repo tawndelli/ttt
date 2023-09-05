@@ -1,0 +1,11 @@
+runtime: nodejs16
+
+instance_class: F2
+
+handlers:
+- url: /
+  static_files: dist/ttt/index.html
+  upload: dist/ttt/index.html
+
+- url: /
+  static_dir: dist/ttt 

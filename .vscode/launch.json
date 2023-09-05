@@ -3,11 +3,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://127.0.0.1:4200",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+    },
+    {
+      "name": "ng serve --host=127.0.0.1",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "url": "http://127.0.0.1:4200/",
+      "webRoot": "${workspaceFolder}"
     },
     {
       "name": "ng test",

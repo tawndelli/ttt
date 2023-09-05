@@ -1,0 +1,43 @@
+.wrapper {
+    text-align: center;
+    box-shadow: 4px 3px 2px #333;
+  }
+
+  .gradient {
+    color: transparent;
+    text-transform: uppercase;
+    font-size: 200px;
+    font-weight: 200;
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(to right,#024075 10%, #25abe8 40%, #bfc47e 60%, #024075 80%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    animation: textclip 3s linear infinite;
+    // display: inline-block;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  }
+
+  .normal
+  {
+    font-weight: 200;
+    font-size: 200px;
+    font-family: Josefin Sans, sans-serif;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    background-color: rgb(64, 64, 64);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+  }
+  
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
