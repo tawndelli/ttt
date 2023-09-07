@@ -5,12 +5,15 @@
         <ul #games class="w-40">
             <li *ngFor="let game of availableGames" [value]="game.name" class="grid grid-cols-6 rounded-lg bg-stone-500 m-1 border-2 
             border-stone-300 drop-shadow-md cursor-pointer group hover:bg-stone-400">
-                <button type="button" class="flex col-span-6 rounded-lg" [class.selected]="game.name === selectedGame.name" (click)="selectGame(game)">
-                    <div class="flex-none rounded-l-md bg-blue-400 place-self-center pl-1 pr-1 pb-1 group-hover:bg-blue-300">
+                <button type="button" class="flex col-span-6 rounded-lg disabled:cursor-not-allowed disabled:hover:bg-stone-500" 
+                [class.selected]="selectedGame != null && game.name == selectedGame.name" (click)="selectGame(game)"
+                [disabled]="game.numPlayers == 2 || isInGame ? true : false">
+                    <div class="flex-none rounded-l-md bg-blue-400 place-self-center pl-1 pr-1 pb-1 group-hover:bg-blue-300"
+                    [ngClass]="{'bg-red-900 group-hover:bg-red-900' : game.numPlayers == 2, 'bg-green-500 group-hover:bg-green-500' : game.numPlayers == 1}">
                         <ng-icon name="heroPlay" class="text-stone-300 align-middle" />
                     </div>
                     <div class="col-span-5 flex-none justify-self-center place-self-center ml-2">
-                        <span class="text-stone-300">{{game.name}}</span>
+                        <span class="text-stone-300" [ngClass]="game.numPlayers == 2 || isInGame ? 'text-stone-400' : ''">{{game.name}}</span>
                     </div>
                 </button>        
             </li>
@@ -18,7 +21,7 @@
     </div>
     <button class="rounded-xl drop-shadow-md mt-4 bg-stone-500 border-2 border-stone-300 text-white p-2 w-40 hover:bg-stone-400 
     active:bg-pink-600 disabled:cursor-not-allowed disabled:hover:bg-stone-500 " 
-    [disabled]="selectedGame != null ? false : true" (click)="joinGame(selectedGame.id)">Join Game</button>
+    [disabled]="selectedGame == null || isInGame ? true : false" (click)="joinGame(selectedGame)">Join Game</button>
 </div>
 
   

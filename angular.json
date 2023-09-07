@@ -66,11 +66,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ttt:build:production",
-              "ssl": true
             },
             "development": {
               "browserTarget": "ttt:build:development",
-              "ssl": true
             }
           },
           "defaultConfiguration": "development"

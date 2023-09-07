@@ -44,11 +44,15 @@ export class SquareComponent implements OnDestroy, OnInit{
   
   letter!: ChildNode;
 
+  componentName!: string;
+
   //#endregion
 
   //#region init
 
-  constructor(private rd: Renderer2, private messageService: MessageService){}
+  constructor(private rd: Renderer2, private messageService: MessageService){
+    this.componentName = 'SquareComponent';
+  }
 
   ngOnInit(): void {
     this.subscription = this.messageService.onMessage().subscribe((message)=>this.processMessage(message));
@@ -64,7 +68,7 @@ export class SquareComponent implements OnDestroy, OnInit{
   //#region methods
 
   processMessage(message: Message){
-    if (message && message.target == this.constructor.name) {
+    if (message && message.target == this.componentName) {
       switch(JSON.parse(message.payload)["msg"]){
         case 'draw':
         case 'winner':

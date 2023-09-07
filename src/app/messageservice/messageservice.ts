@@ -10,12 +10,12 @@ export class MessageService {
     }
 
     connect(): void{
-        // this.socket = new WebSocket('ws://127.0.0.1:8080');
-        this.socket = new WebSocket('wss://game-server-ix4jjrfucq-uc.a.run.app');
-        // this.socket.onopen = ()=>{
-        //     // this.newGame();
-            
-        // };
+        this.socket = new WebSocket('ws://127.0.0.1:8080');
+        // this.socket = new WebSocket('wss://game-server-ix4jjrfucq-uc.a.run.app');
+        this.socket.onopen = ()=>{
+            // this.newGame();
+            console.log("connected to socket at " + this.socket.url);
+        };
     
         this.socket,onclose = (event) =>{
             console.log(event);
@@ -23,17 +23,20 @@ export class MessageService {
     
         this.socket.onmessage = (event) => {
             let msg = JSON.parse(event.data);
-            
+            console.log('json socket message: ' + msg);
+            console.log('event data: ' + event.data);
             switch(msg.msg){
                 case "new game":
                 case "joined game":
                 case "switch player":
                 case "start game":
-                    this.sendMessage(new Message('BoardComponent', `${event.data}`));
-                break;
-
                 case "make move":
+                case "end game":
                     this.sendMessage(new Message('BoardComponent', `${event.data}`));
+                    break;
+                case "player added":
+                    this.sendMessage(new Message('BoardComponent', `${event.data}`));
+                    this.sendMessage(new Message('LobbyComponent', `${event.data}`));
                     break;
             }
 
